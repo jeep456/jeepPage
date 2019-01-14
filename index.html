@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jeep.github.io</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+      body{
+        background: #c4c7cb;
+        background-image: -webkit-radial-gradient(cover, #FFF,#D1D1D1	);
+        background-image: -moz-radial-gradient(cover, #e8eaec, #a4a8ae);
+        background-image: -o-radial-gradient(cover, #e8eaec, #a4a8ae);
+        background-image: radial-gradient(cover, #e8eaec, #a4a8ae)
+      }
+
+      html{
+        min-height:100%;
+      }
+
+      .Navigation{
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+      }
+
+      .Navigation li 	{
+        height: auto;
+        width: 150px;
+        float: left;
+        text-align: center;
+        list-style: none;
+        font:12px "Bonveno", "Century Gothic";
+        padding: 0;
+        margin: 0;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 0 rgba(255,255,255, .9) inset, 0 1px 3px rgba(0,0,0, .1);
+        border-radius: 3px;
+        margin-left:10px;
+      }
+
+      .Navigation a{
+        padding:13px;
+        text-decoration: none;
+        color:#333;
+        text-shadow: 0 1px #fff;
+        display: block;
+      }
+      .Navigation li ul{
+        display: none;
+        height: auto;
+        margin-left: -11px;
+        padding: 0;
+      }
+
+      .Navigation li:hover ul{
+        display: block;
+      }
+
+      .navbar li ul li {
+        background-color:#eee;
+        border: 1px solid #ccc;
+      }
+
+      .Navigation li:hover, a:hover {
+        background: #e8e8e8;
+      }
+
+      /*body{
+        padding: 15px;
+      }
+
+         #header{
+           background-color: #ffb5fb;
+         }
+         #left{
+           background-color: #b1f8ff;
+         }
+         #center{
+           background-color: #7fff6c;
+         }
+         #right{
+           background-color: #f7ff80;
+         }
+         #footer{
+           background-color: #ff8469;
+         }*/
+
+    </style>
+
+  </head>
+  <body>
+
+  <div class="container-fluid" id="app">
+
+    <div class="row">
+      <div class="col-12">&nbsp</div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 offset-3">
+
+        <div id="Navigation">
+          <ul class="Navigation">
+            <li><a href="#">Главная ({{ main }})</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">My Portfolio</a>
+              <ul>
+                <li><a href="#">Web Development</a></li>
+                <li><a href="#">Motion Graphics</a></li>
+                <li><a href="#">Flash Animation</a></li>
+                <li><a href="#">Logo Design</a></li>
+                <li><a href="#">Photography</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+    <!--<script src="/src/js/build.js"></script>-->
+    <script src="https://jeep456.github.io/src/js/build.js"></script>
+  </body>
+</html>
