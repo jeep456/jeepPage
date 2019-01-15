@@ -14,7 +14,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue" type="text/javascript"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.2/vue-router.js"></script>
 
     <style type="text/css">
 
@@ -161,11 +162,11 @@
     <h1>Welcome to Jeeno Page</h1>
 
     <nav>
-      <a class="main" href="#" @click="changeComp('jmain')" :style="{backgroundColor: (activeColor == 'main') ? '#1abc9c' : '' }">Главная</a>
-      <a class="about" href="#" @click="changeComp('jabout')" :style="{backgroundColor: (activeColor == 'about') ? '#e74c3c' : '' }">Обо мне</a>
-      <a class="blog" href="#" @click="changeComp('jblog')" :style="{backgroundColor: (activeColor == 'blog') ? '#3498db' : '' }">Блог</a>
-      <a class="portfolio" href="#" @click="changeComp('jportfolio')" :style="{backgroundColor: (activeColor == 'portfolio') ? '#9b59b6' : '' }">Портфолио</a>
-      <a class="contact" href="#" @click="changeComp('jcontact')" :style="{backgroundColor: (activeColor == 'contact') ? '#e67e22' : '' }">Контакты</a>
+      <a class="main" @click="changeComp('jmain')" :style="{backgroundColor: (activeColor == 'main') ? '#1abc9c' : '' }"><router-link to="/">Главная</router-link></a>
+      <a class="about" @click="changeComp('jabout')" :style="{backgroundColor: (activeColor == 'about') ? '#e74c3c' : '' }"><router-link to="/about">Обо мне</router-link></a>
+      <a class="blog" @click="changeComp('jblog')" :style="{backgroundColor: (activeColor == 'blog') ? '#3498db' : '' }"><router-link to="/blog">Блог</router-link></a>
+      <a class="portfolio" @click="changeComp('jportfolio')" :style="{backgroundColor: (activeColor == 'portfolio') ? '#9b59b6' : '' }"><router-link to="/portfolio">Портфолио</router-link></a>
+      <a class="contact" @click="changeComp('jcontact')" :style="{backgroundColor: (activeColor == 'contact') ? '#e67e22' : '' }"><router-link to="/contact">Контакты</router-link></a>
       <div class="animation"></div>
     </nav>
 
@@ -175,7 +176,8 @@
 
     <div class="row">
       <div class="col-8 offset-2">
-        <component :is="compActive"></component>
+        <!--<component :is="compActive"></component>-->
+        <router-view></router-view>
       </div>
     </div>
 
@@ -195,10 +197,15 @@
       <div class="row">
         <div class="col-6 offset-3">
 
-          &nbsp;About
+          &nbsp;<img src="./src/me.jpg" style="border-radius: 20px">
 
         </div>
       </div>
+
+      <hr>
+
+      <div class="" v-for="i in 10">{{ i }}</div>
+
 
     </div>
   </template>
@@ -229,17 +236,67 @@
 
   <script type="text/javascript">
 
+
+      function Pinger_ping(ip, callback) {
+
+          if(!this.inUse) {
+
+              this.inUse = true;
+              this.callback = callback
+              this.ip = ip;
+
+              var _that = this;
+
+              this.img = new Image();
+
+              this.img.onload = function() {_that.good();};
+              this.img.onerror = function() {_that.good();};
+
+              this.start = new Date().getTime();
+              this.img.src = "http://" + ip;
+              this.timer = setTimeout(function() { _that.bad();}, 1500);
+
+          }
+      }
+
+      // Pinger_ping('jeep-rap.ru');
+
+      let Main = {template:"#jmain"};
+      let About = {template:"#jabout"};
+      let Blog = {template:"#jblog"};
+      let Portfolio = {template:"#jportfolio"};
+      let Contact = {template:"#jcontact"};
+
+      let routes = [
+          {path:'/',component: Main},
+          {path:'/about',component: About},
+          {path:'/blog',component: Blog},
+          {path:'/portfolio',component: Portfolio},
+          {path:'/contact',component: Contact},
+      ];
+
+      let router = new VueRouter({
+          routes,
+          mode: 'history'
+      });
+
+      let active = document.location.href;
+      active = new URL(active);
+      active = (active.pathname == '/') ? 'main' : active.pathname.slice(1) ;
+
+      console.log(active);
+
       new Vue({
           el:'#app',
           data:{
               lava:'Body',
               compActive:'jmain',
               activeClass:'active',
-              activeColor:'main'
+              activeColor: active
           },
           methods:{
               changeComp(val){
-                  this.compActive = val;
+                  //this.compActive = val;
 
                   if (val == 'jmain'){
                       this.activeColor = "main";
@@ -259,22 +316,13 @@
               }
           },
           components:{
-              jmain: {
-                  template:"#jmain"
-              },
-              jabout:{
-                  template:"#jabout"
-              },
-              jblog:{
-                  template:"#jblog"
-              },
-              jportfolio:{
-                  template:"#jportfolio"
-              },
-              jcontact:{
-                  template:"#jcontact"
-              }
-          }
+              jmain: Main,
+              jabout: About,
+              jblog: Blog,
+              jportfolio: Portfolio,
+              jcontact: Contact
+          },
+          router: router
       });
 
   </script>
