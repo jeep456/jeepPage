@@ -186,7 +186,9 @@
   <template id="jmain">
     <div class="jmain">
 
-      &nbsp;Main
+      &nbsp;Main <br>
+
+      Info about me
 
     </div>
   </template>
@@ -199,10 +201,18 @@
 
           &nbsp;<img src="./src/me.jpg" style="border-radius: 20px">
 
+          <p></p>
+
+          <h3>Немного обо мне</h3> <br>
+
+          <div> Мне {{ (myYear < 35) ? myYear + " года" : myYear + " лет" }} </div>
+
         </div>
       </div>
 
       <hr>
+
+      {{ user }}
 
       <div class="" v-for="i in 10">{{ i }}</div>
 
@@ -236,30 +246,12 @@
 
   <script type="text/javascript">
 
+    function passed(y,m,d){
+        let r=new Date(new Date().getTime()-Date.UTC(y,m-1,d));
+        return [r.getFullYear()-1970,r.getMonth(),r.getDate()-1]
+    }
 
-      function Pinger_ping(ip, callback) {
-
-          if(!this.inUse) {
-
-              this.inUse = true;
-              this.callback = callback
-              this.ip = ip;
-
-              var _that = this;
-
-              this.img = new Image();
-
-              this.img.onload = function() {_that.good();};
-              this.img.onerror = function() {_that.good();};
-
-              this.start = new Date().getTime();
-              this.img.src = "http://" + ip;
-              this.timer = setTimeout(function() { _that.bad();}, 1500);
-
-          }
-      }
-
-      // Pinger_ping('jeep-rap.ru');
+    let myYear = passed(1984,4,14)[0];
 
       let Main = {template:"#jmain"};
       let About = {template:"#jabout"};
@@ -269,7 +261,7 @@
 
       let routes = [
           {path:'/',component: Main},
-          {path:'/about',component: About},
+          {path:'/about',component: About,props:{myYear:myYear,user:myYear}},
           {path:'/blog',component: Blog},
           {path:'/portfolio',component: Portfolio},
           {path:'/contact',component: Contact},
@@ -280,16 +272,18 @@
           mode: 'history'
       });
 
-      let active = document.location.href;
-      active = new URL(active);
-      active = (active.pathname == '/') ? 'main' : active.pathname.slice(1) ;
+      //let active = document.location.href;
+      //active = new URL(active);
+      //active = (active.pathname == '/') ? 'main' : active.pathname.slice(1) ;
+
+      //  ([^\/]+)\/?$ Last Path of url       //
 
       console.log(active);
 
       new Vue({
           el:'#app',
           data:{
-              lava:'Body',
+              myYears: myYear,
               compActive:'jmain',
               activeClass:'active',
               activeColor: active
