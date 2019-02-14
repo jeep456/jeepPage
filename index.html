@@ -162,11 +162,11 @@
     <h1>Welcome to Jeeno Page</h1>
 
     <nav>
-      <a class="main" @click="changeComp('jmain')" :style="{backgroundColor: (activeColor == 'main') ? '#1abc9c' : '' }"><router-link to="/">Главная</router-link></a>
-      <a class="about" @click="changeComp('jabout')" :style="{backgroundColor: (activeColor == 'about') ? '#e74c3c' : '' }"><router-link to="/about">Обо мне</router-link></a>
-      <a class="blog" @click="changeComp('jblog')" :style="{backgroundColor: (activeColor == 'blog') ? '#3498db' : '' }"><router-link to="/blog">Блог</router-link></a>
-      <a class="portfolio" @click="changeComp('jportfolio')" :style="{backgroundColor: (activeColor == 'portfolio') ? '#9b59b6' : '' }"><router-link to="/portfolio">Портфолио</router-link></a>
-      <a class="contact" @click="changeComp('jcontact')" :style="{backgroundColor: (activeColor == 'contact') ? '#e67e22' : '' }"><router-link to="/contact">Контакты</router-link></a>
+      <a class="main" @click="changeComp('jmain')" :style="{backgroundColor: (activeColor == 'main') ? '#1abc9c' : '' }"><router-link to="jeepPage/">Главная</router-link></a>
+      <a class="about" @click="changeComp('jabout')" :style="{backgroundColor: (activeColor == 'about') ? '#e74c3c' : '' }"><router-link to="jeepPage/about">Обо мне</router-link></a>
+      <a class="blog" @click="changeComp('jblog')" :style="{backgroundColor: (activeColor == 'blog') ? '#3498db' : '' }"><router-link to="jeepPage/blog">Блог</router-link></a>
+      <a class="portfolio" @click="changeComp('jportfolio')" :style="{backgroundColor: (activeColor == 'portfolio') ? '#9b59b6' : '' }"><router-link to="jeepPage/portfolio">Портфолио</router-link></a>
+      <a class="contact" @click="changeComp('jcontact')" :style="{backgroundColor: (activeColor == 'contact') ? '#e67e22' : '' }"><router-link to="jeepPage/contact">Контакты</router-link></a>
       <div class="animation"></div>
     </nav>
 
