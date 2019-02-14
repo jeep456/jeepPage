@@ -261,10 +261,10 @@
 
       let routes = [
           {path:'/',component: Main},
-          {path:'/about',component: About,props:{myYear:myYear,user:myYear}},
-          {path:'/blog',component: Blog},
-          {path:'/portfolio',component: Portfolio},
-          {path:'/contact',component: Contact},
+          {path:'jeepPage/about',component: About,props:{myYear:myYear,user:myYear}},
+          {path:'jeepPage/blog',component: Blog},
+          {path:'jeepPage/portfolio',component: Portfolio},
+          {path:'jeepPage/contact',component: Contact},
       ];
 
       let router = new VueRouter({
@@ -278,7 +278,7 @@
 
       //  ([^\/]+)\/?$ Last Path of url       //
 
-      console.log(active);
+      console.log(active + " - ACTIVE");
 
       new Vue({
           el:'#app',
